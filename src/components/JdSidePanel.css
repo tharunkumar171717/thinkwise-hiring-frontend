@@ -1,0 +1,203 @@
+/* JD side panel - Thinkwise design (tokens come from .twd-vars on the aside) */
+.jd-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: min(520px, 100vw);
+    background: var(--twd-paper);
+    border-left: 1px solid var(--twd-line);
+    box-shadow: -28px 0 64px -36px var(--twd-shadow-lg);
+    display: flex;
+    flex-direction: column;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    /* above the topbar (90) so the panel owns the full right edge */
+    z-index: 95;
+    font-family: "Cambria", system-ui, sans-serif;
+}
+
+.jd-panel--open {
+    transform: translateX(0);
+}
+
+.jd-panel-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--twd-line);
+    background: var(--twd-surface);
+    flex: none;
+}
+
+.jd-panel-header-main {
+    flex: 1;
+    min-width: 0;
+}
+
+.jd-panel-header-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.jd-panel-title {
+    margin: 0.4rem 0 0;
+    font-family: "Instrument Serif", serif;
+    font-weight: 400;
+    font-size: 22px;
+    color: var(--twd-ink);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    word-break: break-word;
+}
+
+.jd-panel-close {
+    background: var(--twd-paper);
+    border: 1px solid var(--twd-line);
+    color: var(--twd-soft);
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    cursor: pointer;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.18s ease, border-color 0.18s ease;
+}
+
+.jd-panel-close:hover {
+    color: var(--twd-ink);
+    border-color: var(--twd-soft);
+}
+
+.jd-panel-body {
+    flex: 1;
+    overflow-y: auto;
+    /* wheel at the panel's edges must not scroll the page behind it */
+    overscroll-behavior: contain;
+    padding: 18px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    color: var(--twd-ink);
+}
+
+.jd-panel-section {
+    background: var(--twd-surface);
+    border: 1px solid var(--twd-line2);
+    border-radius: 14px;
+    padding: 14px 16px;
+}
+
+.jd-panel-section-title {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--twd-faint);
+    margin-bottom: 10px;
+}
+
+.jd-panel-subgroup {
+    margin-top: 0.6rem;
+}
+
+.jd-panel-subgroup:first-child {
+    margin-top: 0;
+}
+
+.jd-panel-subtitle {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--twd-faint);
+    margin-bottom: 0.35rem;
+    font-weight: 700;
+}
+
+.jd-panel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.7rem 1rem;
+}
+
+.jd-panel-field-label {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--twd-faint);
+    margin-bottom: 0.18rem;
+    font-weight: 700;
+}
+
+.jd-panel-field-value {
+    font-size: 13.5px;
+    color: var(--twd-ink);
+    font-weight: 500;
+    word-break: break-word;
+}
+
+.jd-panel-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+}
+
+.jd-panel-text {
+    font-size: 13px;
+    color: var(--twd-soft);
+    white-space: pre-wrap;
+    margin: 0;
+    line-height: 1.6;
+}
+
+.jd-panel-muted {
+    color: var(--twd-faint);
+    font-style: italic;
+}
+
+/* "Not specified" placeholder. Every Overview row renders now, so unfilled ones
+   need to recede - same weight as a real value would fight it for attention. */
+.jd-panel-unset {
+    color: var(--twd-faint);
+    font-weight: 400;
+    font-style: italic;
+}
+
+.jd-panel-jd {
+    margin: 0;
+    padding: 12px 14px;
+    background: var(--twd-surface2);
+    border: 1px solid var(--twd-line2);
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--twd-ink);
+    white-space: pre-wrap;
+    word-break: break-word;
+    max-height: none;
+    overflow: visible;
+}
+
+/* When the JD panel is open, give the page content room on the right
+   so users can still see and interact with the page they're on. */
+.layout--jd-open .main-area {
+    padding-right: min(520px, 100vw);
+    transition: padding-right 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (max-width: 900px) {
+    .jd-panel {
+        width: 100vw;
+    }
+
+    .layout--jd-open .main-area {
+        padding-right: 0;
+    }
+}

@@ -1,0 +1,36 @@
+{
+  "name": "thinkwise-hiring-frontend",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "next dev -p 5173",
+    "build": "next build",
+    "start": "next start -p 5173",
+    "lint": "eslint .",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:report": "playwright show-report"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.106.1",
+    "@tanstack/react-query": "^5.100.14",
+    "next": "^15.5.0",
+    "react": "^19.2.0",
+    "react-datepicker": "^9.1.0",
+    "react-dom": "^19.2.0",
+    "recharts": "^3.8.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@playwright/test": "^1.60.0",
+    "@types/node": "^24.10.1",
+    "@types/react": "^19.2.14",
+    "@types/react-datepicker": "^6.2.0",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.39.1",
+    "eslint-plugin-react-hooks": "^7.0.1",
+    "globals": "^16.5.0",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.48.0"
+  }
+}

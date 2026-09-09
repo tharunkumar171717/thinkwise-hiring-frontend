@@ -1,0 +1,96 @@
+/* ============================================
+   WAVE BACKGROUND (Fixed & Full Screen)
+   ============================================ */
+.wave-container {
+    position: fixed;
+    /* Fixed to viewport, doesn't scroll */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+    pointer-events: none;
+    background: var(--bg-primary);
+    /* Ensure base color matches */
+}
+
+.wave {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    /* Centered */
+    width: 200vw;
+    height: 200vw;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border-radius: 40%;
+    filter: blur(60px);
+    /* Soften edges for liquid look */
+}
+
+/* 
+   Using huge rotating "blobs" with wave-like edges creates 
+   a continuous full-screen flowy effect that covers everything.
+*/
+
+/* Light Theme (Red/White) */
+[data-theme="light"] .wave-1 {
+    background: radial-gradient(circle at center, rgba(220, 38, 38, 0.08), transparent 70%);
+    animation: rotateFlow 20s infinite linear;
+    width: 180vw;
+    height: 180vw;
+    opacity: 0.8;
+}
+
+[data-theme="light"] .wave-2 {
+    background: radial-gradient(circle at center, rgba(220, 38, 38, 0.05), transparent 70%);
+    animation: rotateFlow 25s infinite linear reverse;
+    width: 160vw;
+    height: 160vw;
+    border-radius: 45%;
+    opacity: 0.6;
+}
+
+[data-theme="light"] .wave-3 {
+    background: radial-gradient(circle at center, rgba(220, 38, 38, 0.03), transparent 70%);
+    animation: rotateFlow 30s infinite linear;
+    width: 140vw;
+    height: 140vw;
+    border-radius: 35%;
+    opacity: 0.4;
+}
+
+/* Dark Theme (Red/Black) */
+[data-theme="dark"] .wave-1 {
+    background: radial-gradient(circle at center, rgba(220, 38, 38, 0.15), transparent 70%);
+    animation: rotateFlow 20s infinite linear;
+    width: 180vw;
+    height: 180vw;
+}
+
+[data-theme="dark"] .wave-2 {
+    background: radial-gradient(circle at center, rgba(220, 38, 38, 0.1), transparent 70%);
+    animation: rotateFlow 25s infinite linear reverse;
+    width: 160vw;
+    height: 160vw;
+}
+
+[data-theme="dark"] .wave-3 {
+    background: radial-gradient(circle at center, rgba(220, 38, 38, 0.05), transparent 70%);
+    animation: rotateFlow 30s infinite linear;
+    width: 140vw;
+    height: 140vw;
+}
+
+@keyframes rotateFlow {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}

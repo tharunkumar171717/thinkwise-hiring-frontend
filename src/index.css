@@ -1,0 +1,250 @@
+/* ============================================
+   THINKWISE HIRING DESK - DESIGN SYSTEM
+   Light (white + red) / Dark (black + red)
+   ============================================ */
+
+/* ----- LIGHT THEME (default) ----- */
+:root,
+[data-theme="light"] {
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --bg-card: rgba(0, 0, 0, 0.02);
+  --bg-glass: rgba(0, 0, 0, 0.03);
+  --bg-glass-hover: rgba(0, 0, 0, 0.06);
+  --bg-input: #f4f4f5;
+
+  --text-primary: #18181b;
+  --text-secondary: #52525b;
+  --text-muted: #a1a1aa;
+
+  --accent: #dc2626;
+  --accent-light: #ef4444;
+  --accent-dark: #b91c1c;
+  --accent-glow: rgba(220, 38, 38, 0.2);
+  --accent-gradient: linear-gradient(135deg, #dc2626, #ef4444, #f87171);
+  --accent-subtle: rgba(220, 38, 38, 0.08);
+
+  --success: #16a34a;
+  --danger: #dc2626;
+  --warning: #f59e0b;
+
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-glass: rgba(0, 0, 0, 0.12);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.1);
+  --shadow-glow: 0 0 30px var(--accent-glow);
+
+  --hero-text-gradient: linear-gradient(135deg, #18181b 0%, #dc2626 60%, #ef4444 100%);
+  --page-gradient-1: rgba(220, 38, 38, 0.04);
+  --page-gradient-2: rgba(239, 68, 68, 0.03);
+
+  color-scheme: light;
+}
+
+/* ----- DARK THEME ----- */
+[data-theme="dark"] {
+  --bg-primary: #0a0a0b;
+  --bg-secondary: #141416;
+  --bg-card: rgba(255, 255, 255, 0.04);
+  --bg-glass: rgba(255, 255, 255, 0.05);
+  --bg-glass-hover: rgba(255, 255, 255, 0.09);
+  --bg-input: rgba(255, 255, 255, 0.07);
+
+  --text-primary: #f4f4f5;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+
+  --accent: #ef4444;
+  --accent-light: #f87171;
+  --accent-dark: #dc2626;
+  --accent-glow: rgba(239, 68, 68, 0.3);
+  --accent-gradient: linear-gradient(135deg, #dc2626, #ef4444, #f87171);
+  --accent-subtle: rgba(239, 68, 68, 0.1);
+
+  --success: #34d399;
+  --danger: #f87171;
+  --warning: #fbbf24;
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-glass: rgba(255, 255, 255, 0.12);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 30px var(--accent-glow);
+
+  --hero-text-gradient: linear-gradient(135deg, #f4f4f5 0%, #ef4444 60%, #f87171 100%);
+  --page-gradient-1: rgba(220, 38, 38, 0.08);
+  --page-gradient-2: rgba(239, 68, 68, 0.05);
+
+  color-scheme: dark;
+}
+
+/* ----- SHARED TOKENS ----- */
+:root {
+  /* Typography */
+  --font-family: 'Cambria', serif;
+  --font-secondary: 'Roboto', sans-serif;
+  --font-display: 'Cambria', serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+  --font-size-6xl: 3.75rem;
+
+  /* Spacing */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+}
+
+/* ============================================
+   RESET & BASE
+   ============================================ */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-family);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: background var(--transition-base), color var(--transition-base);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--accent-light);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(220, 38, 38, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 20px rgba(220, 38, 38, 0.5);
+  }
+}
+
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+@keyframes drift {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
