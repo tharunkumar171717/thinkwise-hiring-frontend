@@ -631,6 +631,12 @@ export default function RequirementDetail({ reqId: reqIdProp }: { reqId?: string
             icon: <Icon name="users" size={15} />,
             onClick: () => setShowAssignDrawer(true),
         }] : []),
+        ...(effectiveAdmin && req?.status !== "DELETED" ? [{
+            type: "item" as const,
+            label: "Post in Website",
+            icon: <Icon name="external" size={15} />,
+            onClick: () => navigate(`/requirements/${id}/post-to-website`),
+        }] : []),
         ...(!effectiveAdmin && isRecruiter && req?.status !== "DELETED" && user && !(req?.assigned_recruiters || []).includes(user.id) ? [{
             type: "item" as const,
             label: pendingRequestForThisReq ? "Request Pending" : "Request Assignment",
@@ -824,6 +830,16 @@ export default function RequirementDetail({ reqId: reqIdProp }: { reqId?: string
                                             borderRadius: 999, padding: "1px 7px",
                                         }}>{req.assigned_recruiters?.length}</span>
                                     )}
+                                </button>
+                            )}
+                            {effectiveAdmin && req?.status !== "DELETED" && (
+                                <button
+                                    className="twd-btn twd-btn-ghost"
+                                    onClick={() => navigate(`/requirements/${id}/post-to-website`)}
+                                    title="Review the job description and publish it to the careers website"
+                                >
+                                    <Icon name="external" size={14} />
+                                    Post in Website
                                 </button>
                             )}
                             {!effectiveAdmin && isRecruiter && req?.status !== "DELETED" && user && !(req?.assigned_recruiters || []).includes(user.id) && (

@@ -169,3 +169,19 @@ export const analyticsApi = {
     getRecruiterMetrics: () => api.get("/analytics/recruiters"),
     getInsights: () => api.get("/analytics/insights"),
 };
+
+// Publishing a requirement's job description to the public careers website.
+// Handled by the Next.js route at /api/website/job-postings (not the FastAPI
+// backend) so the website's API key stays server-side.
+export interface PublishedPosting {
+    id: string;
+    url: string;
+    published_at: string;
+    simulated?: boolean;
+    detail?: string;
+}
+
+export const websiteJobPostingApi = {
+    publish: (body: Record<string, any>): Promise<PublishedPosting> =>
+        api.post("/website/job-postings", body),
+};
